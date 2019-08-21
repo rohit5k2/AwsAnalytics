@@ -1,2 +1,2 @@
 # AwsAnalytics
-AWS Analytics sample
+AWS Analytics sample application
