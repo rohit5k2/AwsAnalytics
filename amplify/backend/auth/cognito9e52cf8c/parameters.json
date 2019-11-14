@@ -1,0 +1,25 @@
+{
+    "identityPoolName": "awsanalytics_identitypool_47d3ef16",
+    "allowUnauthenticatedIdentities": true,
+    "openIdLambdaRoleName": "awsana47d3ef16_openid_lambda_role",
+    "authSelections": "identityPoolOnly",
+    "resourceName": "cognito9e52cf8c",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    }
+}
