@@ -4,6 +4,9 @@ import android.content.Context
 import com.amazonaws.mobile.client.AWSMobileClient
 import com.amazonaws.mobile.client.Callback
 import com.amazonaws.mobile.client.UserStateDetails
+import com.amazonaws.mobile.config.AWSConfiguration
+import com.amazonaws.mobileconnectors.pinpoint.PinpointConfiguration
+import com.amazonaws.mobileconnectors.pinpoint.PinpointManager
 import rohit5k2.awsanalytics.ui.helper.SuccessFailureContract
 
 /**
@@ -14,6 +17,11 @@ class AWSCommHandler <S, F>(context: Context, setupCallback: SuccessFailureContr
         fun getMobileClient():AWSMobileClient{
             return AWSMobileClient.getInstance()
         }
+
+        fun getPinPointManager(context: Context):PinpointManager{
+            val pinPointConfig = PinpointConfiguration(context, getMobileClient(), AWSConfiguration(context))
+            return PinpointManager(pinPointConfig)
+        }
     }
 
     init{
@@ -21,7 +29,8 @@ class AWSCommHandler <S, F>(context: Context, setupCallback: SuccessFailureContr
     }
 
     private fun initMobileClient(context: Context, setupCallback: SuccessFailureContract<S, F>){
-        AWSMobileClient.getInstance().initialize(context.applicationContext, object : Callback<UserStateDetails> {
+        val awsConfig = AWSConfiguration(context)
+        AWSMobileClient.getInstance().initialize(context.applicationContext, awsConfig, object : Callback<UserStateDetails> {
             override fun onResult(userStateDetails: UserStateDetails) {
                 setupCallback.successful(userStateDetails as S)
             }

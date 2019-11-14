@@ -25,11 +25,18 @@ class SplashActivity : BaseActivity() {
         // Nothing to be done here
     }
 
+    override fun init() {
+
+    }
+
     private fun initAwsComponents(){
         AWSCommHandler(this.applicationContext, object : SuccessFailureContract<UserStateDetails, String> {
             override fun successful(userStatusDetails: UserStateDetails) {
                 runOnUiThread {
                     findUserStatusAndMove(userStatusDetails)
+                    /*val ppm = AWSCommHandler.getPinPointManager(this@SplashActivity.applicationContext)
+                    ppm.sessionClient.startSession()
+                    ppm.sessionClient.stopSession()*/
                 }
             }
 
@@ -45,6 +52,7 @@ class SplashActivity : BaseActivity() {
         when(userStateDetails.userState){
             UserState.SIGNED_IN -> goToMain()
             UserState.SIGNED_OUT -> goToLogin()
+            UserState.GUEST -> goToLogin()
         }
 
         CLog.i("Status is ${userStateDetails.userState.name}")

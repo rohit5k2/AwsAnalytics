@@ -1,11 +1,9 @@
 package rohit5k2.awsanalytics.ui.open
 
-import android.content.Intent
 import android.os.Bundle
 import com.amazonaws.mobile.auth.core.internal.util.ThreadUtils
 import com.amazonaws.mobile.client.results.SignInResult
 import com.amazonaws.mobile.client.results.SignInState
-import com.amazonaws.services.cognitoidentityprovider.model.UserNotConfirmedException
 import kotlinx.android.synthetic.main.activity_login.*
 import rohit5k2.awsanalytics.R
 import rohit5k2.awsanalytics.backend.handler.AwsAPIHandler
@@ -27,6 +25,10 @@ class LoginActivity : BaseActivity() {
         login.setOnClickListener {
             login()
         }
+    }
+
+    override fun init() {
+
     }
 
     private fun login(){

@@ -14,9 +14,11 @@ abstract class BaseActivity:AppCompatActivity() {
         super.setContentView(layoutResID)
 
         wireEvents()
+        init()
     }
 
     abstract fun wireEvents()
+    abstract fun init()
 
     protected fun showToast(message:String){
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
