@@ -1,0 +1,15 @@
+{
+    "auth": {
+        "cognito9e52cf8c": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": []
+        }
+    },
+    "analytics": {
+        "awsanalytics": {
+            "service": "Pinpoint",
+            "providerPlugin": "awscloudformation"
+        }
+    }
+}

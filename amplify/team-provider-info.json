@@ -1,0 +1,37 @@
+{
+    "windows": {
+        "awscloudformation": {
+            "AuthRoleName": "awsanalytics-windows-20191114151344-authRole",
+            "UnauthRoleArn": "arn:aws:iam::002807997966:role/awsanalytics-windows-20191114151344-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::002807997966:role/awsanalytics-windows-20191114151344-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "awsanalytics-windows-20191114151344-deployment",
+            "UnauthRoleName": "awsanalytics-windows-20191114151344-unauthRole",
+            "StackName": "awsanalytics-windows-20191114151344",
+            "StackId": "arn:aws:cloudformation:us-east-2:002807997966:stack/awsanalytics-windows-20191114151344/41066930-06c3-11ea-868a-025282f53354"
+        },
+        "categories": {
+            "auth": {
+                "cognito9e52cf8c": {}
+            }
+        }
+    },
+    "linux": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-awsanalytics-linux-155216-authRole",
+            "UnauthRoleArn": "arn:aws:iam::002807997966:role/amplify-awsanalytics-linux-155216-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::002807997966:role/amplify-awsanalytics-linux-155216-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-awsanalytics-linux-155216-deployment",
+            "UnauthRoleName": "amplify-awsanalytics-linux-155216-unauthRole",
+            "StackName": "amplify-awsanalytics-linux-155216",
+            "StackId": "arn:aws:cloudformation:us-east-1:002807997966:stack/amplify-awsanalytics-linux-155216/da836c50-2d49-11ea-9468-12dc156c2e93",
+            "AmplifyAppId": "d2cmogk26vovzx"
+        },
+        "categories": {
+            "auth": {
+                "cognito9e52cf8c": {}
+            }
+        }
+    }
+}
