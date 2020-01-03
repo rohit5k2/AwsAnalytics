@@ -17,8 +17,6 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_ativity)
-
-        initAwsComponents()
     }
 
     override fun wireEvents() {
@@ -26,7 +24,7 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun init() {
-
+        initAwsComponents()
     }
 
     private fun initAwsComponents(){
@@ -34,9 +32,6 @@ class SplashActivity : BaseActivity() {
             override fun successful(userStatusDetails: UserStateDetails) {
                 runOnUiThread {
                     findUserStatusAndMove(userStatusDetails)
-                    /*val ppm = AWSCommHandler.getPinPointManager(this@SplashActivity.applicationContext)
-                    ppm.sessionClient.startSession()
-                    ppm.sessionClient.stopSession()*/
                 }
             }
 

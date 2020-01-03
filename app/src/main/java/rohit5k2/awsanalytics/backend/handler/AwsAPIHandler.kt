@@ -29,6 +29,18 @@ class AwsAPIHandler {
         })
     }
 
+    fun<S,F> forceChangePassword(newPassword: String, listener:SuccessFailureContract<S,F>){
+        AWSCommHandler.getMobileClient().confirmSignIn(newPassword, object:Callback<SignInResult>{
+            override fun onResult(signInResult: SignInResult) {
+                listener.successful(signInResult as S)
+            }
+
+            override fun onError(e: Exception) {
+                listener.failed(e as F)
+            }
+        })
+    }
+
     fun logout(){
         AWSCommHandler.getMobileClient().signOut()
     }

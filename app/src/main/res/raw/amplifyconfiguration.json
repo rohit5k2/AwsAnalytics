@@ -1,0 +1,17 @@
+{
+    "UserAgent": "aws-amplify-cli/2.0",
+    "Version": "1.0",
+    "analytics": {
+        "plugins": {
+            "awsPinpointAnalyticsPlugin": {
+                "pinpointAnalytics": {
+                    "appId": "6e7d33882eeb4cbc81cc40dc4118c1d5",
+                    "region": "us-east-1"
+                },
+                "pinpointTargeting": {
+                    "region": "us-east-1"
+                }
+            }
+        }
+    }
+}

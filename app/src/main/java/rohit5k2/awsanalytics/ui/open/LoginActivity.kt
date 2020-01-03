@@ -7,6 +7,7 @@ import com.amazonaws.mobile.client.results.SignInState
 import kotlinx.android.synthetic.main.activity_login.*
 import rohit5k2.awsanalytics.R
 import rohit5k2.awsanalytics.backend.handler.AwsAPIHandler
+import rohit5k2.awsanalytics.backend.helper.AWSCommHandler
 import rohit5k2.awsanalytics.ui.helper.BaseActivity
 import rohit5k2.awsanalytics.ui.helper.SuccessFailureContract
 import rohit5k2.awsanalytics.utils.CLog
@@ -38,7 +39,7 @@ class LoginActivity : BaseActivity() {
                     CLog.i("Sign in state is ${data.signInState}")
                     when {
                         data.signInState == SignInState.DONE -> goToMain()
-                        data.signInState == SignInState.NEW_PASSWORD_REQUIRED -> failed(java.lang.Exception())
+                        data.signInState == SignInState.NEW_PASSWORD_REQUIRED -> changePassword()
                         else -> failed(java.lang.Exception())
                     }
                 }
@@ -49,5 +50,22 @@ class LoginActivity : BaseActivity() {
                     }
                 }
             })
+    }
+
+    private fun changePassword(){
+        AwsAPIHandler.instance.forceChangePassword("USE_NEW_PASSWORD", object :SuccessFailureContract<SignInResult, Exception>{
+            override fun successful(data: SignInResult) {
+                when (data.signInState) {
+                    SignInState.DONE -> goToMain()
+                    else -> failed(Exception())
+                }
+            }
+
+            override fun failed(data: Exception) {
+                ThreadUtils.runOnUiThread {
+                    showToast("Password change failed.")
+                }
+            }
+        })
     }
 }
